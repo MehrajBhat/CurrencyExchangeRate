@@ -1,9 +1,9 @@
 import React from "react";
 
 interface TableProps {
-  data: any;
-  currencyList: any;
-  columnHeading: any;
+  data: string[];
+  currencyList: { [currencyCode: string]: string };
+  columnHeading: string[];
   setColmnHeading: any;
 }
 

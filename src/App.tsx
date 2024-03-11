@@ -3,7 +3,7 @@ import CurrencyConverter from './components/currencyConverter/currencyConverter'
 
 function App() {
   return (
-    <div className="App">
+    <div style={{ display: "flex", justifyContent: "center", height: "100vh" }}>
       <header className="App-header">       
        <CurrencyConverter/>
       </header>

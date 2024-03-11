@@ -20,7 +20,6 @@ const CurrencyConverter = () => {
   const [currencyValueData, setCurrencyValueData] = useState();
   const [date, setDate] = useState(formatDateToYYYYMMDD(new Date()) || "");
   const [loading, setLoading] = useState(true);
-  // const [disabledDropDown, setDisabledDropDown] = useState(true);
 
   const [columnHeading, setColmnHeading] = useState([
     "usd",
@@ -42,15 +41,16 @@ const CurrencyConverter = () => {
           setLoading(false);
         } else alert("Can not load data");
       })
-      .catch((err) => console.log("errr 11", err.response.data));
+      .catch((err) => console.log(err.response.data));
   };
 
   const getCurrencyValueDetails = useCallback(() => {
     setLoading(true);
     if (defaultBaseCurrency && date) {
+      // Generate an array containing the previous 7 days from the given date
       let dateArr = [];
       const givenDate = moment(date);
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < 6; i++) { 
         dateArr.push(
           moment(givenDate).subtract(i, "days").format("YYYY-MM-DD")
         );
@@ -91,9 +91,10 @@ const CurrencyConverter = () => {
   };
 
   const handleSelectedCurrency = (option: any) => {
+    // Check if the number of selected currencies is less than 7
     if (columnHeading.length < 7) {
+      // Add the selected option to the column headings array
       setColmnHeading((prevArray) => [...prevArray, option]);
-      // setDisabledDropDown (false)
     } else {
       // setDisabledDropDown (true)
     }
@@ -134,7 +135,6 @@ const CurrencyConverter = () => {
         {!loading && currencies && currencyValueData ? (
           <>
             <Dropdown
-              // disabled={disabledDropDown}
               label={"Select Currency"}
               value={defaultBaseCurrency}
               options={currencies}
@@ -146,7 +146,6 @@ const CurrencyConverter = () => {
               value={defaultBaseCurrency}
               options={currencies}
               onSelect={handleSelectedCurrency}
-              // disabled={disabledDropDown}
             />
             <Table
               data={currencyValueData}

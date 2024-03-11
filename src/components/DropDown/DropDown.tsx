@@ -5,7 +5,6 @@ interface DropdownsProps {
   value: string;
   options: any;
   onSelect: (selectedOption: any) => void;
-  // disabled: boolean;
 }
 
 export default function Dropdown({
@@ -13,7 +12,7 @@ export default function Dropdown({
   value,
   options,
   onSelect,
-}: // disabled,
+}: 
 DropdownsProps) {
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -28,7 +27,6 @@ DropdownsProps) {
         <label>{label} : </label>
         <select
           style={{ padding: "6px" }}
-          // disabled={label === "Add Currency" ? disabled : false}
           value={selectedOption}
           onChange={(e) => handleSelect(e.target.value)}
         >
