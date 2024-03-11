@@ -5,6 +5,7 @@ import Dropdown from "../DropDown/DropDown";
 import Table from "../Table/Table";
 import DatePicker from "../DatePicker/DatePicker";
 import { url } from "../Config/api";
+import { getCurrencyArrayColumn } from "../Config/columnHeaders";
 
 function formatDateToYYYYMMDD(date: Date): string | null {
   if (!(date instanceof Date)) return null;
@@ -21,15 +22,7 @@ const CurrencyConverter = () => {
   const [date, setDate] = useState(formatDateToYYYYMMDD(new Date()) || "");
   const [loading, setLoading] = useState(true);
 
-  const [columnHeading, setColmnHeading] = useState([
-    "usd",
-    "eur",
-    "jpy",
-    "chf",
-    "cad",
-    "aud",
-    "zar",
-  ]);
+  const [columnHeading, setColmnHeading] = useState(getCurrencyArrayColumn);
 
   const getCurrencyList = () => {
     setLoading(true);
