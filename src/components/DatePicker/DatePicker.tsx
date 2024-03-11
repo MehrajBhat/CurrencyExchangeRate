@@ -8,7 +8,7 @@ interface DatePickerProps {
 export default function DatePicker({ date, onChange }: DatePickerProps) {
   return (
     <>
-      <label>Select currency : </label>
+      <label>Select Date : </label>
       <input
         type="date"
         value={date}

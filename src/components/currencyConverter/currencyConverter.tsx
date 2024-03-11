@@ -74,7 +74,7 @@ const CurrencyConverter = () => {
       Promise.all(promises) // get data for previos 7 days
         .then((results) => {
           const rates: any = [];
-          results.forEach((result) => {
+          results.map((result) => {
             rates.push(result);
           });
           setCurrencyValueData(rates);
